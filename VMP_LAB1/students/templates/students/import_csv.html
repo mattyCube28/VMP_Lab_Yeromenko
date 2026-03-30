@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Імпорт студентів</title>
+</head>
+<body>
+    <h1>Імпорт бази студентів з CSV</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Оберіть CSV фaйл:</label><br><br>
+        <input type="file" name="csv_file" accept=".csv" required><br><br>
+        <button type="submit">Завантажити та імпортувати</button>
+    </form>
+    <br>
+    <a href="{% url 'student_list' %}">Повернутися до списку</a>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Імпорт з API</title>
+</head>
+<body>
+    <h1>Отримання бази студентів через зовнішнє API</h1>
+    <p>Натисніть кнопку нижче, щоб автоматично завантажити дані з тестового сервера.</p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Завантажити з API</button>
+    </form>
+    
+    <br>
+    <a href="{% url 'student_list' %}">Повернутися до списку</a>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Звіт успішності</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Звіт: Оцінки з математики</h1>
+    
+    {{ names|json_script:"names-data" }}
+    {{ math_grades|json_script:"grades-data" }}
+
+    <canvas id="myChart" width="400" height="200"></canvas>
+    
+    <script>
+        const namesArray = JSON.parse(document.getElementById('names-data').textContent);
+        const gradesArray = JSON.parse(document.getElementById('grades-data').textContent);
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: namesArray, 
+                datasets: [{
+                    label: 'Оцінки з математики',
+                    data: gradesArray,  
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: { scales: { y: { beginAtZero: true } } }
+        });
+    </script>
+</body>
+</html>
